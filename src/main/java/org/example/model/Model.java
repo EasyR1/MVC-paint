@@ -2,6 +2,7 @@ package org.example.model;
 
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
+import java.awt.geom.RectangularShape;
 import java.util.Observable;
 
 // TODO: 25.10.2024 Сделать singleton класс
@@ -21,4 +22,12 @@ public class Model extends Observable {
     public void draw(Graphics2D g) {
         currentShape.draw(g);
     }
+
+    public void update() {
+    }
+
+    public void createCurrentShape(MyShape shape) {
+
+    }
+
 }

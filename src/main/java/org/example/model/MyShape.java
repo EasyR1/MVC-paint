@@ -43,7 +43,7 @@ public class MyShape {
     public void setFb(FillBehavior fb) {
         this.fb = fb;
         fb.setShape(shape);
-        fb.setColor(color);
+        fb.setColor(color.pink);
     }
 
     public void setShape(RectangularShape shape) {
@@ -57,5 +57,14 @@ public class MyShape {
     void draw(Graphics2D g) {
         fb.draw(g);
 
+    }
+    @Override
+    public MyShape clone(){
+        MyShape clone = new MyShape();
+        clone.fb = fb.clone();
+        RectangularShape anotherShape = (RectangularShape) shape.clone();
+        clone.setShape(anotherShape);
+        clone.fb.setShape(anotherShape);
+        return clone;
     }
 }
