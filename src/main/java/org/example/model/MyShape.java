@@ -8,7 +8,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RectangularShape;
-
+import org.example.model.fill.NoFill;
 public class MyShape {
     private Color color;
     private RectangularShape shape;
