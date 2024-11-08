@@ -20,6 +20,8 @@ public class Controller {
     private MyPanel panel;
     private Point2D firstPoint;
     private Point2D secondPoint;
+
+
     public static synchronized Controller getInstance(){
         if(instance==null){
             instance=new Controller();
@@ -40,6 +42,7 @@ public class Controller {
         frame.setPanel(panel);
     }
     public void getPointOne(Point2D p){
+        model.createCurrentShape(sampleShape.clone);
         firstPoint = p;
     }
     public void getPointTwo(Point2D p){
