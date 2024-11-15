@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import org.example.model.MyShape;
+import org.example.model.factory.MenuState;
 import org.example.model.factory.ShapeType;
 
 import javax.swing.*;
@@ -28,10 +29,10 @@ public class MenuController {
         return menuBar;
     }
 
-    public enum ShapeType{
-        RECTANGULAR, ELLIPSE
-    }
-
+   // public enum ShapeType {
+  //      RECTANGULAR, ELLIPSE;
+  //  }
+    private MenuState state;
 
     private JMenu createShapeMenu() {
 
