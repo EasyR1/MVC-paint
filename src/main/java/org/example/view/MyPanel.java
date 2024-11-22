@@ -1,6 +1,6 @@
 package org.example.view;
 
-import org.example.controller.Controller;
+import org.example.controller.state.Controller;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;

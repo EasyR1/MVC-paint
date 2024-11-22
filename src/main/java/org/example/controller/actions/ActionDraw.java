@@ -1,4 +1,4 @@
-package org.example.controller;
+package org.example.controller.actions;
 
 import org.example.model.Model;
 import org.example.model.MyShape;
@@ -28,6 +28,19 @@ public class ActionDraw {
         secondPoint =  point;
         shape = shape.clone();
         model.createCurrentShape(shape);
+        model.update();
+    }
+    @Override
+    public void mouseDragged(Point point){
+        firstPoint = point;
+        sampleShape.setFrame(firstPoint, secondPoint);
+        model.update();
+    }
+    @Override
+    public void mousePressed(Point point){
+        secondPoint=point;
+        sampleShape = factory.createShape();
+        model.addCurrentShape(sampleShape);
         model.update();
     }
 }

@@ -1,9 +1,6 @@
 package org.example.model.factory;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.example.controller.ActionDraw;
-import org.example.controller.MenuController;
+import org.example.controller.actions.ActionDraw;
 
 import java.awt.*;
 

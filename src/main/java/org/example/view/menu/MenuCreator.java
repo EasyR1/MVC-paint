@@ -1,23 +1,21 @@
-package org.example.controller;
+package org.example.view.menu;
 
-import org.example.model.MyShape;
+import org.example.controller.actions.ActionDraw;
 import org.example.model.factory.MenuState;
 import org.example.model.factory.ShapeType;
 
 import javax.swing.*;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
 
-public class MenuController {
-    private static MenuController instance;
+public class MenuCreator {
+    private static MenuCreator instance;
     private JMenuBar menuBar;
     private ActionDraw actionDraw;
-    private MenuController(){
+    private MenuCreator(){
         menuBar = createMenuBar();
     }
-    public static MenuController getInstance(){
+    public static MenuCreator getInstance(){
         if (instance == null){
-            instance = new MenuController();
+            instance = new MenuCreator();
         }
         return instance;
     }

@@ -1,11 +1,12 @@
-package org.example.controller;
+package org.example.controller.state;
 
+import org.example.controller.actions.ActionDraw;
 import org.example.model.Model;
 import org.example.model.MyShape;
-import org.example.model.fill.Fill;
 import org.example.model.fill.NoFill;
 import org.example.view.MyFrame;
 import org.example.view.MyPanel;
+import org.example.view.menu.MenuCreator;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
@@ -40,7 +41,7 @@ public class Controller {
         frame = new MyFrame();
         frame.setPanel(panel);
 
-        MenuController menuController = MenuController.getInstance();
+        MenuCreator menuController = MenuCreator.getInstance();
         menuController.setActionDraw(actionDraw);
         frame.setJMenuBar(menuController.createMenuBar());
 
