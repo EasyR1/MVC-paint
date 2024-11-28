@@ -1,4 +1,4 @@
-package org.example.model.factory;
+package org.example.controller.factory;
 
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
