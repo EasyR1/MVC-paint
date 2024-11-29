@@ -26,7 +26,7 @@ public class ShapeCreation {
 
     public MyShape createShape(){
         MyShape newShape = new MyShape();
-        RectangularShape shape = state.getShapeType().createShape().getShape();
+        RectangularShape shape = state.getShapeType().createShape();
 
         FillBehavior fillBehavior = state.isFill()? new Fill() : new NoFill();
         fillBehavior.setShape(shape);

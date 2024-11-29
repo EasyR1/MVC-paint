@@ -25,7 +25,7 @@ public class MenuCreator {
     private Model model;
     private MyShape shape;
 
-     private MenuCreator(){
+    private MenuCreator(){
         menuBar = createMenuBar();
     }
 
@@ -35,7 +35,7 @@ public class MenuCreator {
         }
         return instance;
     }
-   public JMenuBar createMenuBar(){
+    public JMenuBar createMenuBar(){
         JMenuBar menuBar = new JMenuBar();
 
         JMenu shapeMenu = createShapeMenu();
@@ -57,21 +57,33 @@ public class MenuCreator {
         return jToolBar;
     }
 
-   private ArrayList<Action> createToolBarItems() {
+    private ArrayList<Action> createToolBarItems() {
         ArrayList<Action> menuItems = new ArrayList<>();
 
-        URL colorUrl = getClass().getClassLoader().getResource("ico/color.png");
+        URL colorUrl = getClass().getClassLoader().getResource("color_16x16.png");
         ImageIcon colorIco = colorUrl == null ? null : new ImageIcon(colorUrl);
-        AppCommand colorCommand = new SwitchColor();
+        AppCommand colorCommand = new SwitchColor(menuState, false, null);
         menuItems.add(new CommandActionListener("Цвет", colorIco, colorCommand));
 
-        URL drawUrl = getClass().getClassLoader().getResource("resources/ico/draw.png");
+        URL drawUrl = getClass().getClassLoader().getResource("draw_16x16.png");
         ImageIcon drawIco = drawUrl == null ? null : new ImageIcon(drawUrl);
-        AppCommand drawCommand = new SwitchColor();
-        menuItems.add(new CommandActionListener("Рисовать", drawIco, drawCommand));
+        AppCommand drawAction = new SwitchAction(new ActionDraw(model, shape), menuState);
+        menuItems.add(new CommandActionListener("draw", drawIco, drawAction));
 
+        URL moveUrl = getClass().getClassLoader().getResource("move_16x16.png");
+        ImageIcon moveIco = moveUrl == null ? null : new ImageIcon(moveUrl);
+        AppCommand moveAction = new SwitchAction(new ActionMove(model),menuState);
+        menuItems.add(new CommandActionListener("Двигать", moveIco, moveAction));
 
+        URL ellipseUrl = getClass().getClassLoader().getResource("ellipse_16x16.png");
+        ImageIcon ellipseIco = moveUrl == null ? null : new ImageIcon(ellipseUrl);
+        AppCommand ellipseAction = new SwitchShape(ShapeType.ELLIPSE,menuState);
+        menuItems.add(new CommandActionListener("Элипс", ellipseIco, ellipseAction));
 
+        URL rectangularUrl = getClass().getClassLoader().getResource("rectangular_16x16.png");
+        ImageIcon rectangularIco = moveUrl == null ? null : new ImageIcon(rectangularUrl);
+        AppCommand rectangularAction = new SwitchShape(ShapeType.RECTANGULAR,menuState);
+        menuItems.add(new CommandActionListener("Элипс", rectangularIco, rectangularAction));
         return menuItems;
     }
 
@@ -125,26 +137,9 @@ public class MenuCreator {
         colorMenu.add(blueItem);
 
         JMenuItem rgbItem = new JMenuItem("RGB");
-        rgbItem.addActionListener(new CommandActionListener(new SwitchColor()));
+        rgbItem.addActionListener(new CommandActionListener(new SwitchColor(menuState, false, null)));
         colorMenu.add(rgbItem);
 
         return colorMenu;
     }
-
-    public void setMenuState(MenuState menuState) {
-        this.menuState = menuState;
-    }
-
-    public MenuState getMenuState() {
-        return menuState;
-    }
-
-    public void setModel(Model model) {
-        this.model = model;
-    }
-
-    public Model getModel() {
-        return model;
-    }
 }
-
