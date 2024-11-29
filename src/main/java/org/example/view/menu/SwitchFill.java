@@ -7,14 +7,14 @@ import java.awt.*;
 import java.awt.geom.RectangularShape;
 
 public class SwitchFill implements AppCommand{
-    private Color color;
-    private RectangularShape shape;
-    public SwitchFill(Color color, RectangularShape shape) {
-        this.color = color;
-        this.shape = shape;
+    private boolean fill;
+    private MenuState menuState;
+    public SwitchFill(MenuState menuState, boolean fill) {
+        this.menuState = menuState;
+        this.fill = fill;
     }
     @Override
     public void execute() {
-shape.
+menuState.setFill(fill);
     }
 }

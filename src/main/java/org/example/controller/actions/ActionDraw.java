@@ -13,6 +13,8 @@ public class ActionDraw implements AppAction {
     private ShapeCreation shapeCreation;
     private Point2D firstPoint;
     private Point2D secondPoint;
+    MyShape drawableShape;
+    MyShape sampleShape;
 
     public MyShape getShape() {
         return shape;
@@ -45,10 +47,30 @@ public class ActionDraw implements AppAction {
     }
 
     @Override
+    public void execute() {
+        model.addCurrentShape(drawableShape);
+        model.update();
+    }
+    @Override
+    public void unexecute() {
+        drawableShape = model.getLastShape();
+        model.removeLastShape();
+        model.update();
+    }
+    @Override
+    public AppAction cloneAction() {
+        ActionDraw actionDraw = new ActionDraw(model,shape);
+        actionDraw.sampleShape = sampleShape.clone();
+        actionDraw.drawableShape = drawableShape;
+        return actionDraw;
+    }
+
+    @Override
     public void mousePressed(Point point){
         firstPoint = point;
         shape = shapeCreation.createShape();
         model.addCurrentShape(shape);
         model.update();
     }
+
 }

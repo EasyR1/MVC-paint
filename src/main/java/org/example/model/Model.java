@@ -9,6 +9,7 @@ import java.util.Observable;
 public class Model extends Observable {
     private MyShape currentShape;
     private List<MyShape> shapeList = new ArrayList<>();
+    private MyShape lastShape;
 
     public void  createCurrentShape(MyShape shape){
         currentShape = shape;
@@ -38,5 +39,16 @@ public class Model extends Observable {
     }
     public List<MyShape> getShapeList() {
         return shapeList;
+    }
+
+    public MyShape getLastShape() {
+        return lastShape;
+    }
+
+    public void setLastShape(MyShape lastShape) {
+        this.lastShape = lastShape;
+    }
+
+    public void removeLastShape() {
     }
 }
