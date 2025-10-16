@@ -2,6 +2,7 @@ package org.example.controller;
 
 import org.example.model.Model;
 import org.example.model.MyShape;
+import org.example.model.fill.FillBehavior;
 import org.example.model.fill.NoFill;
 import org.example.view.MyFrame;
 import org.example.view.MyPanel;
@@ -9,6 +10,7 @@ import org.example.view.MyPanel;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.awt.geom.RectangularShape;
 
 // TODO: Сделать singleton класс
 public class Controller {
@@ -19,10 +21,18 @@ public class Controller {
     private Point2D secondPoint;
     public Controller() {
         model = new Model();
-        MyShape shape = new MyShape(new Rectangle2D.Double());
-        shape.setFb(new NoFill());
-        model.setMyShape(shape);
 
+        FillBehavior fillBehavior = new NoFill();
+        RectangularShape rectangularShape = new Rectangle2D.Double();
+        fillBehavior.setShape(rectangularShape);
+        MyShape shape = MyShape.builder()
+                .shape(rectangularShape)
+                .fb(fillBehavior)
+                .color(Color.BLUE)
+                .build();
+        fillBehavior.setShape(rectangularShape);
+
+        model.setCurrentShape(shape);
         panel = new MyPanel(this);
         // TODO: Поменять наблюдатель на более современную реализацию
         model.addObserver(panel);
